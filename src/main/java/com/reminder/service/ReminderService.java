@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.reminder.model.Reminder;
 import com.reminder.model.User;
 import com.reminder.repository.ReminderRepository;
@@ -30,13 +31,14 @@ public class ReminderService {
         return reminderRepository.findByUserId(id);
     }
 
-    public void deleteReminder(Long reminderId) {
+    public void deleteReminder(Long reminderId, Long userId) {
         if (reminderRepository.existsById(reminderId)){
-            reminderRepository.deleteById(reminderId);
+            reminderRepository.deleteByIdAndUserId(reminderId, userId);
         } else {
             throw new IllegalArgumentException("Reminder not found with id: " + reminderId);
         }
     }
+
 
     // Additional methods for updating and deleting reminders can be added here
 

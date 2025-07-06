@@ -38,6 +38,10 @@ public class User {
 
     private String email;
 
+    private String password;
+
+    private String phoneNumber;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Reminder> reminders = new ArrayList<>();

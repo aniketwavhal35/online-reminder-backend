@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.reminder.model.User;
 import com.reminder.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +35,7 @@ public class UserController {
      * @return ResponseEntity containing the user if found, or 404 Not Found if not found
      */
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@RequestParam Long id) {
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
             Optional<User> user = userService.getUserById(id);
         return user.map(ResponseEntity::ok)
                    .orElseGet(() -> ResponseEntity.notFound().build());

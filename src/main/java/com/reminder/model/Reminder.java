@@ -25,7 +25,7 @@ public class Reminder {
     private String title;
     private String description;
     private String dateTime;
-    private boolean isCompleted;
+    private boolean isCompleted=false;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
